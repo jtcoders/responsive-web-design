@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Intro to Responsive Design</title>
+
+    <meta name="description" content="">
+    <meta name="author" content="Cara Jo Miller, Lisa Smith, and others, adapted by Jessica Parsons">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="reveal/css/reveal.css">
+    <link rel="stylesheet" href="reveal/css/theme/simple.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <!-- light editor-->
+    <link rel="stylesheet" href="reveal/lib/css/light.css">
+    <!-- dark editor<link rel="stylesheet" href="reveal/lib/css/dark.css">-->
+    <link rel="stylesheet" href="css/slides.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'reveal/css/print/pdf.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    </script>
+    <!-- <link rel="icon" type="image/x-icon" href="reveal/favicon.ico" /> -->
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <!-- Opening -->
+            <section>
+                <h2>Intro to Responsive Web Design</h2>
+                <p>jtcoders.github.io/responsive-web-design</p>
+            </section>
+            <section>
+              <h2>What is it!?</h2>
+              <p>RWD is a design approach that suggests that the design &amp; development of a site shoud respond to the user's behavior and environment.</p>
+              <p><img src="images/responsive-design.png" alt="responsive design"/></p>
+            </section>
+            <section>
+              <h2>Wait, people really care?</h2>
+              <ul>
+                <li>91% of U.S. Citizens have their smart phone within reach 24/7</li>
+                <li>Smartphone users check their phones 150x every day</li>
+                <li>25% of mobile users in the U.S. don't even own a laptop or desktop</li>
+              </ul>
+            </section>
+            <section>
+              <h2>Why it's awesome</h2>
+              <p>RWD modifies the presentation of a site, without modifying the content of the page. So no matter what, every user has access to the same information.</p>
+            <img src="images/responsive-example.png" alt="responsive example" />
+            </section>
+
+          <section>
+            <h2>How did we get here?</h2>
+              <ul>
+                <li>In 2010, Ethan Marcotte coined the tearm in an article on <a href="http://alistapart.com/article/responsive-web-design" target="_blank">A List Apart</a></li>
+                <li>In 2011, he wrote the book on it (literally), called: "Responsive Web Design"</li>
+                <li>In 2012, RWD was the #2 trend in web design</li>
+                <li>2013 was called "The Year of Responsive Web Design" because it was and still is a cost effective alternative to mobile apps</li>
+              </ul>
+          </section>
+          <section>
+            <h2>The Ingredients of RWD</h2>
+            <ul>
+              <li>A Flexible foundation</li>
+              <li>Flexible images</li>
+              <li>CSS Media Queries to make the magic happen</li>
+            </ul>
+          </section>
+
+            <section>
+                <h3>Fixed vs. Fluid Width pages</h3>
+                <p>
+                    <strong class="blue">Fixed</strong>
+                </p>
+                <ul>
+                    <li>Fixed websites have a set width for the wrapper, usually 960px to 1024px.</li>
+                    <li>The elements inside the wrapper have a set width, or percentage of the wrapper width.</li>
+                    <li>No matter the screensize, the user always sees the same size site.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Fixed vs. Fluid Width pages</h3>
+                <p>
+                    <strong class="blue">Fluid</strong>
+                </p>
+                <ul>
+                    <li>Also referred to as a liquid layout.</li>
+                    <li>Majority of the components, including the wrapper, have percentages for their widths.</li>
+                    <li>The layout adjusts for the width of the user's screen resolution.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Containers</h3>
+                <p>Wrappers are a good way to center content if the screen width is wider than your content.</p>
+                <pre><code class = "html">
+  .container {
+      width: 100%; /* take up full viewport width */
+      max-width: 1400px; /* if viewport is larger than 1440px,
+                            don't let it take up 100% */
+      margin: 0 auto; /* center content in the viewport */
+  }
+</code></pre>
+                <ul>
+                    <li>The container will take up 100% of the screen if the width of the viewport is less than 1440px.</li>
+                    <li>If the viewport is wider than 1440px, it will reach it's max width, and become centered in the viewport.</li>
+                </ul>
+            </section>
+            <section>
+              <h2>Exercise</h2>
+              <ol>
+                <li>Open this pen (<a href="http://cdpn.io/e/dXvzEq" target="_blank">http://cdpn.io/e/dXvzEq</a>) and fork it.</li>
+                <li>Convert the widths to fluid, with the content centered on wider screens.</li>
+                <li>Re-size the window to check your work.</li>
+              </ol>
+            </section>
+            <section>
+              <h2>Flexible images</h2>
+              <p>Text scales easily on smaller devices, but images are a bit tricky.</p>
+              <p>Images will overflow their container elements if they're too big for them.</p>
+              <p>That's annoying.</p>
+            </section>
+            <section>
+              <h2>Enter max-width</h2>
+              <p>By using max-width on images, they will only expand to the size of their parent.</p>
+              <p>If their parent has no width, it will just expand to the width of the viewport.</p>
+<pre><code>img {
+  max-width: 100%;
+}</code></pre>
+            </section>
+            <section>
+              <h2>Exercise</h2>
+              <ol>
+                <li>Open the same pen.</li>
+                <li>Set the images to re-size with the content.</li>
+                <li>Re-size the window to check your work.</li>
+              </ol>
+            </section>
+              <section>
+                <h2>Media Queries</h2>
+                <p>Media queries apply certain CSS in certain situations.</p>
+                <ul>
+                 <li>Print Media</li>
+                  <li>iPhone</li>
+                  <li>iPad</li>
+                  <li>Even larger screens</li>
+                </ul>
+              </section>
+              <section>
+                <h2>Include Media Queries Last</h2>
+                <p>They will overwrite previous styles because they are last in the cascade.</p>
+                <div>Here's the CSS for #header-image</div>
+
+                <p><img src="images/mq-normal-style.png" width="380px"/></p>
+                <div>And here are the media queries that call for the larger image to be used for screens over 1200px wide, and to turn off the header image if the site is printed.</div>
+                <p><img src="images/mq-larger-img.png" height="120px"/><img src="images/mq-print.png" height="120px"/></p>
+              </section>
+              <section>
+                <h2>Exercise</h2>
+                <ol>
+                  <li>Open the same pen.</li>
+                  <li>Add a print media query which removes the header and footer.</li>
+                  <li>Open debug view and use ctrl+p to check your work in the print preview.</li>
+                </ol>
+              </section>
+          <section>
+            <h2>Standard MQs</h2>
+            <p>For devices that have dimensions no smaller than 320px and are not larger than 480px</p>
+<pre><code>/* Smartphones (portrait and landscape) */
+@media only screen and (min-device-width : 320px)
+and (max-device-width : 480px) {
+/* Styles */
+}</code></pre>
+<p>iPad dimensions with the orientation in landscape.</p>
+<pre><code>/* iPads (landscape) ----------- */
+@media only screen and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+/* Styles */
+}</code></pre>
+          </section>
+          <section>
+            <h2>How they work</h2>
+            <p>Rather than looking for a type of device, they look at the capability of the device. You can use them to check for all sorts of things.</p>
+            <ul>
+              <li>Width &amp; height of the viewport</li>
+              <li>Width &amp; height of the device</li>
+              <li>Orientation - landscape or portrait</li>
+              <li>Resolution - retina or normal</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Mobile First</h2>
+            <p>By designing sites with mobile first in mind, it makes scaling them down a lot easier.</p>
+            <p>Mobile first allows us to simplify the user flow to its basic elements and then enhance it as the screen size increases.</p>
+          </section>
+          <section>
+            <h2>iPhone:</h2>
+            <img src="images/media-queries-phone.png" />
+          </section>
+          <section>
+            <h2>Tablet</h2>
+            <img src="images/media-queries-tablet.png" />
+          </section>
+          <section>
+            <h2>Desktop</h2>
+            <img src="images/media-queries-desktop.png" />
+          </section>
+          <section>
+            <h2>Exercise</h2>
+            <ol>
+              <li>Open the same pen.</li>
+              <li>Create a tablet view, with the sidebar below the main contant, and the sidebar list items displayed horizontally.</li>
+              <li>Create a mobile view, with the menu items stacked vertically, and header and footer content centered.</li>
+              <li>Open debug view, and copy the link into <a href="http://ami.responsivedesign.is" target="_blank">http://ami.responsivedesign.is</a> to check your work.
+            </ol>
+            <p>BONUS: Change the order of the styles and queries to mobile-first.</p>
+          </section>
+          <section>
+          <h2>Viewport Meta</h2>
+          <p>Use this to control the size of the viewport.</p>
+<pre><code>&lt;meta name="viewport" content="width=device-width,
+initial-scale=1;"></code></pre>
+<p><code>width=device-width</code> makes the page width match the width of the device.</p>
+<p><code>initial-scale=1</code> makes the browser not to zoom when changing orientation</p>
+<p>More info in <a href="https://developers.google.com/speed/docs/insights/ConfigureViewport" target="_blank">Google PageSpeed docs</a>.</p>
+          </section>
+          <section>
+              <h2>Retina Images</h2>
+              <p>Retina screens have twice the pixel density than regular screens.</p>
+              <p>If you're not using SVG Graphics, you'll need two images, one for regular resolution and one for retina.</p>
+            </section>
+            <section>
+              <h2>2x Media Queries</h2>
+              <p>Target only retina screens by using this media query:</p>
+<pre><code>@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    /* Retina-specific stuff here */
+}</code></pre>
+              <p>This takes care of two things, 2x pixel ratio on iOS devices and "high res" Android screens.</p>
+            </section>
+            <section>
+              <h2>2x Images</h2>
+              <div class="left" style="width:50%;">
+              <p class="green">Regular resolution icon</p>
+              <img src="images/119-piggy-bank.png" />
+              </div>
+               <div class="right" style="width:50%;">
+              <p class="green">2x resolution icon</p>
+              <img src="images/119-piggy-bank@2x.png" />
+              </div>
+
+<pre style="clear: both;"><code>@media
+(-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+    .icon {
+      background-image: url(images/icon-2x.png) no-repeat 0 0;
+      background-size: 20px 20px;
+    }
+}</code></pre>
+            </section>
+            <section>
+              <h2>Or, you could just use SVG</h2>
+            </section>
+            <section>
+                <h2>SVG Graphics</h2>
+                <p>Designers everywhere have always wanted to use vector based graphics on their sites because of their quality.</p>
+                <p>Well now you can!</p>
+            </section>
+            <section>
+                <h2>It's not that new really</h2>
+                <p>It's been a W3C (World Wide Web Consortium) standard since 1999</p>
+                <p>In recent years browsers are becoming more and more compatable with SVG graphics.</p>
+                <p>Once upon a time, .png graphics weren't supported in browsers, soon the world will know about SVG!</p>
+            </section>
+            <section>
+                <h2>How to use SVG today</h2>
+                <p>Use Adobe Illustrator, or other vector program, to create a high quality image.</p>
+                <p>Save it as a .svg file.</p>
+                <p>Save a high res .png image as a fallback.</p>
+            </section>
+            <section>
+                <h2>Include SVG</h2>
+                <p>Use SVG as an image:</p>
+                <pre><code>&lt;img src="image.svg" onerror="this.onerror=null; this.src='image.png'"></code></pre>
+                <p>Use SVG as a background image:</p>
+                <p class="blue">HTML:</p>
+                <pre><code>&lt;a href="/" class="logo">
+GDI
+&lt;/a></code></pre>
+                <p class="blue">CSS:</p>
+                <pre><code class="css">.logo {
+display: block;
+color: transparent;
+width: 100px;
+height: 82px;
+background: url(kiwi.svg);
+background-size: 100px 82px;
+}</code></pre>
+            </section>
+            <section>
+                <h2>Browser Support</h2>
+                <p>Our favorite topic - Internet Explorer</p>
+                <a href="http://caniuse.com/#search=svg" target="_blank"><img src="images/svg-support.png" alt="SVG support" /></a>
+                <p>Chris Coyer has written an <a href="http://css-tricks.com/using-svg/" target="_blank">amazing article</a> with tons of work arounds for our BFF IE8.</p>
+            </section>
+
+        </div>
+        <footer>
+            <div class="copyright">
+                Intro to Responsive Web Design &mdash; Adapted from GDI &mdash;
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">
+                    <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/80x15.png" />
+                </a>
+            </div>
+        </footer>
+    </div>
+
+
+    <script src="reveal/lib/js/head.min.js"></script>
+    <script src="reveal/js/reveal.min.js"></script>
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/slides.js"></script>
+    <script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [{
+            src: 'reveal/lib/js/classList.js',
+            condition: function() {
+                return !document.body.classList;
+            }
+        }, {
+            src: 'reveal/plugin/markdown/showdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'reveal/plugin/markdown/markdown.js',
+            condition: function() {
+                return !!document.querySelector('[data-markdown]');
+            }
+        }, {
+            src: 'reveal/plugin/highlight/highlight.js',
+            async: true,
+            callback: function() {
+                hljs.initHighlightingOnLoad();
+            }
+        }, {
+            src: 'reveal/plugin/zoom-js/zoom.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }, {
+            src: 'reveal/plugin/notes/notes.js',
+            async: true,
+            condition: function() {
+                return !!document.body.classList;
+            }
+        }]
+    });
+    </script>
+
+</body>
+
+</html>
